@@ -1,0 +1,184 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body{
+    background-color: rgba(250,250,250,1);
+}
+
+/*.visually-hidden{*/
+/*    display: none;*/
+/*}*/
+
+/* container */
+.container{
+    width: 950px;
+    margin: 0 auto;
+    /* background-color:rgba(0, 0, 0, 0.075); */
+}
+
+/* header */
+#header{
+    height: 53px;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+.header{
+    height: 53px;
+    padding: 0 20px 0 20px;
+    overflow: hidden;
+}
+
+.insta_log{
+    float: left;
+}
+
+.insta_log img{
+    width: 150px;
+    height: 50px;
+}
+
+.header_nav{
+    float: right;
+}
+
+.header_nav a{
+    display: inline-block;
+    margin: 10px 8px 5px 8px;
+    font-size: 22px;
+    color: #000;
+}
+
+.header_nav .mini img{
+    width: 25px;
+    height: 25px;
+    margin-top: -4px;
+    padding: 1px 1px;
+    vertical-align: middle;
+    border-radius: 50%;
+    border: 1px solid #000;
+}
+
+/* section1 */
+#profile{
+    height: 230px;
+}
+
+.profile{
+    padding: 30px 0 45px 80px;
+    border-bottom: 1px solid #ccc;
+    overflow: hidden;
+}
+
+.user_profile{
+    float: left;
+}
+
+.user_profile{
+    margin-right: 70px;
+}
+
+.user_profile a img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.user_edit{
+    margin-top: 10px;
+}
+
+.user_edit h1{
+    display: inline-block;
+    font-weight: 300;
+    margin-right: 10px;
+}
+
+.user_edit button{
+    width: 94px;
+    height: 30px;
+    font-weight: 900;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: rgba(250,250,250,1);
+    cursor: pointer;
+}
+
+.user_edit a{
+    display: inline-block;
+    margin-top: -4px;
+    margin-left: 8px;
+    vertical-align: middle;
+    font-size: 23px;
+    color: #333;
+}
+
+.profile .desc{
+    margin-top: 20px;
+}
+
+/* line */
+#line{
+    height: 48px;
+}
+
+.line_btn{
+    padding-left: 190px;
+}
+
+.line_btn button{
+    margin: -2px 30px;
+    padding: 15px 20px;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.25;
+    border:none;
+    color: #777;
+    background-color: rgba(250,250,250,1);
+    cursor: pointer;
+}
+
+.line_btn button span{
+    margin-left: 7px;
+}
+
+.line_btn .active{
+    color: #333;
+    border-top: 1.5px solid #333;
+}
+
+/* photo */
+.photo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.photo_img{
+    position: relative;
+}
+
+.photo_img a img{
+    width: 270px;
+    height: 300px;
+    margin: 0 10px 15px 10px;
+}
+
+.photo_img a img:hover{
+    filter: contrast(55%);
+    transition: opacity 0.1s ease;
+}
+
+.photo_img:hover .photo_info{
+    display: block;
+}
+
+.polaroid{
+          width: 50%;
+          background-color: white;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          margin-bottom: 50px; /*카드 거리*/
+        }
+

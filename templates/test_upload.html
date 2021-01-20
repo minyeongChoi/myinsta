@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+
+    <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+
+    <!-- JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+    <!-- style -->
+    <link rel="stylesheet" href="./css/style.css">
+
+     <script>
+            function openClose() {
+                // id 값 post-box의 display 값이 block 이면(= 눈에 보이면)
+                if ($('#post-box').css('display') == 'block') {
+                    // post-box를 가리고
+                    $('#post-box').hide();
+                    // // 다시 버튼을 클릭하면, 박스 열기를 할 수 있게 텍스트 바꿔두기
+                    // $('#btn-post-box').text('포스팅 박스 열기');
+                } else {
+                    // 아니면(눈에 보이지 않으면) post-box를 펴라
+                    $('#post-box').show();
+                    // // 다시 버튼을 클릭하면, 박스 닫기를 할 수 있게 텍스트 바꿔두기
+                    // $('#btn-post-box').text('포스팅 박스 닫기');
+                }
+            }
+        </script>
+
+</head>
+<body>
+    <!-- header -->
+    <div id="header">
+        <div class="container">
+            <div class="header">
+                <div class="insta_log">
+                    <a href="#">
+                    <img src="../images/logo.png" alt="logo">
+                    </a>
+                </div>
+
+            <div class="header_nav">
+                <a href="homp_s.html"><i class="fa fa-home" aria-hidden="true"></i></a>
+                <a onclick="openClose()"><i class="fa fa-paper-plane" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-compass" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                <a onclick="openClose()" class="mini"><img src="../images/profile.jpg" alt="mini_profile"></a>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!-- line -->
+    <div id="line">
+        <div class="container">
+            <div class="line_btn">
+                <button type="button" class="active"><i class="fa fa-th" aria-hidden="true"></i><span>음식</span></button>
+                <button type="button" class="igtv_btn"><i class="fa fa-desktop" aria-hidden="true"></i><span>고양이</span></button>
+                <button type="button" class="saveed_btn"><i class="fa fa-bookmark" aria-hidden="true"></i><span>풍경</span></button>
+                <button type="button" class="taged_btn"><i class="fa fa-user" aria-hidden="true"></i><span>도서</span></button>
+            </div>
+        </div>
+    </div>
+
+<!--<div>-->
+
+<!--                    <button onclick="openClose()" id="btn-post-box" type="button" class="btn btn-primary">포스팅 박스 열기-->
+<!--                    </button>-->
+
+<!--</div>-->
+
+
+    <!-- //line -->
+
+     <div id="post-box" class="form-post" style="display:none">
+        <table border="1">
+            <tr>
+                <td>사진 업로드</td>
+                   <td><input type="text" name="title" id="title" required/></td>
+            </tr>
+            <tr>
+                <td>내용</td>
+                <td><textarea name="content" id="content" cols="30" rows="5" required></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="submit">글쓰기</button>
+                </td>
+            </tr>
+        </table>
+     </div>
+</form>
+
+
+</body>
+</html>

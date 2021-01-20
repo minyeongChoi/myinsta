@@ -120,11 +120,13 @@
       <div class="container">
         <div class="photo">
 
-          <div class="photo_img">
-
-            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <img src="{{ url_for('static', filename='1.jpg') }}" alt="1"> </button>
-
+          <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+             <div class="photo_img">
+               <a href="#">
+                 <img src="{{ url_for('static', filename='1.jpg') }}" alt="1" />
+               </a>
+             </div>
+          </button>
 
               <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -135,7 +137,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-<!--                    <img src="{{ url_for('static', filename='1.jpg') }}" alt="1">-->
+                    ...
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -145,7 +147,6 @@
               </div>
             </div>
 
-          </div>
 
           <div class="photo_img">
             <a href="#"

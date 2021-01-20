@@ -6,7 +6,7 @@
     <title>Instagram</title>
 <!--    <link rel="shortcut icon" href="./images/favicon.ico">-->
     <!-- style -->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
@@ -16,16 +16,18 @@
             <div class="header">
                 <div class="insta_log">
                     <a href="#">
-                    <img src="../images/logo.png" alt="logo">
+                    <img src="{{ url_for('static', filename='logo.png') }}" />
                     </a>
                 </div>
 
             <div class="header_nav">
-                <a href="homp_s.html"><i class="fa fa-home" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-home" aria-hidden="true"></i></a>
+               <a onclick="openClose()"
+              ><i class="fa fa-paper-plane" aria-hidden="true"></i
+            ></a>
                 <a href="#"><i class="fa fa-compass" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                <a href="#" class="mini"><img src="../images/profile.jpg" alt="mini_profile"></a>
+                <a href="#" class="mini"><img src="{{ url_for('static', filename='profile.jpg') }}" alt="mini_profile"></a>
             </div>
             </div>
         </div>
@@ -46,7 +48,7 @@
     <div class="container">
 
                 <div class="polaroid">
-                  <img src ="../images/8.jpg" alt="Norway" style="width:100%">
+                  <img src ="{{ url_for('static', filename='8.jpg') }}" alt="Norway" style="width:100%">
                   <div class="container">
                     <p>피자랑 파스타 열라 맛있다</p>
                   </div>

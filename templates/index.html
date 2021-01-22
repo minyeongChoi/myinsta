@@ -9,6 +9,10 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+              integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+              crossorigin="anonymous"></script>
 
     <!-- JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -17,12 +21,6 @@
       integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
       crossorigin="anonymous"
     ></script>
-
-    <!-- style -->
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
-    />
 
     <script>
       function openClose() {
@@ -36,6 +34,97 @@
         }
       }
     </script>
+
+<!--    ////-->
+    <script type="text/javascript">
+            $(document).ready(function () {
+                $("#reviews-box").html("");
+                showReview();
+            });
+            function makeReview() {
+                // 1. 제목, 저자, 리뷰 내용을 가져옵니다. -> jQuery id를 가지고 와서 '값'을 출력  .val()
+                let title = $('#title').val()
+                // let author = $('#author').val()
+                let review = $('#review').val()
+
+                // // 2. 제목, 저자, 리뷰 중 하나라도 입력하지 않았을 경우 alert를 띄웁니다.
+                // if(title == ""){
+                //     alert("title이 작성되지 않았습니다.")
+                //     return;
+                // }else if(author == ""){
+                //     alert("저자가 없습니다.")
+                //     return;
+                // }else if(review == ""){
+                //     alert("리뷰를 작성해주세요")
+                //     return;
+                // }
+
+                // 3. POST /upload 에 저장을 요청합니다.
+                $.ajax({
+                    type: "POST",
+                    url: "/upload",
+                    data: {             //왼쪽은 키 오른쪽은 가져온 값
+                        title:title,
+                        // author:author,
+                        review:review
+                    },
+                    success: function (response) {
+                        if (response["result"] == "success") {
+                            alert(response["msg"]);
+                            window.location.reload();       //새로고침 함수
+                        }
+                    }
+                })
+            }
+
+            function showReview() {
+                // 1. 리뷰 목록을 서버에 요청하기
+                // 2. 요청 성공 여부 확인하기
+                // 3. 요청 성공했을 때 리뷰를 올바르게 화면에 나타내기
+                $.ajax({
+                    type: "GET",
+                    url: "/review",
+                    data: {},
+                    success: function (response) {
+                        let data = response['reviews']
+                        for(let i=0; i<data.length;i++){
+                            //회면에 데이터를 나타내줘야함
+                            // let author = data[i]['author']
+                            let title = data[i]['title']
+                            let review = data[i]['review']
+
+                            writeTable(title,review)
+                        }
+                    }
+                })
+            }
+
+            function writeTable(title,review){
+                let tmpHtml = `
+                    <tr>
+                        <td>${title}</td>
+                        <td>${review}</td>
+                    </tr>
+                    `
+                $("#reviews-box").append(tmpHtml)
+            }
+            // function validateLength(obj) {
+            //     let content = $(obj).val();
+            //     if (content.length > 140) {
+            //         alert("리뷰는 140자까지 기록할 수 있습니다.");
+            //         $(obj).val(content.substring(0, content.length - 1));
+            //     }
+            // }
+        </script>
+<!--    ////-->
+
+
+    <!-- style -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
   </head>
   <body>
     <!-- header -->
@@ -90,26 +179,26 @@
           <div id="post-box" class="form-post" style="display: none">
             <table border="1">
               <tr>
-                <td>사진 업로드</td>
+                <td>제목</td>
                 <td><input type="text" name="title" id="title" required /></td>
               </tr>
               <tr>
                 <td>내용</td>
                 <td>
                   <textarea
-                    name="content"
-                    id="content"
-                    cols="30"
-                    rows="5"
-                    required
-                  ></textarea>
+                    name="content" id="review" cols="30" rows="5" required ></textarea>
                 </td>
               </tr>
-              <tr>
-                <td colspan="2">
-                  <button type="submit">글쓰기</button>
-                </td>
-              </tr>
+
+<!--              <tr>-->
+<!--                <td colspan="2">-->
+<!--                  <button type="submit">글쓰기</button>-->
+<!--                </td>-->
+<!--              </tr>-->
+
+              <div class="review">
+                    <button onclick="makeReview()" type="button" class="btn btn-primary">리뷰 작성하기</button>
+                </div>
             </table>
           </div>
         </div>
@@ -177,6 +266,29 @@
              </div>
           </button>
 
+ <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header" id="reviews-box">
+                  <h5 class="modal-title" id="exampleModalLabel"> </h5> <!--모달 제목 -->
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                      <div class="photo_img">
+                             <a href="#">
+                               <img src="{{ url_for('static', filename='1.jpg') }}" alt="1" />
+                             </a>
+                      </div>
+                </div>
+
+                <div class="modal-footer justify-content-between">
+                  <p>텍스트 왼쪽 정렬) 토스트 맛있다 아라ㅡ채ㅔㅔ매ㅑ두ㅡㅌㅊ어ㅑ래ㅏㅏ 나ㅏㅣ야쵸</p>
+               </div>
+
+              </div>
+            </div>
+          </div>
 
         </div>
       </div>

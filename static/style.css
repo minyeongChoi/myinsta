@@ -7,9 +7,9 @@ body{
     background-color: rgba(250,250,250,1);
 }
 
-/*.visually-hidden{*/
-/*    display: none;*/
-/*}*/
+.visually-hidden{
+    display: none;
+}
 
 /* container */
 .container{
@@ -161,9 +161,9 @@ body{
 }
 
 .photo_img a img{
-    width: 270px;
-    height: 300px;
-    margin: 0 10px 15px 10px;
+    width: 250px;
+    height: 270px;
+    /*margin: 0 10px 10px 10px;*/
 }
 
 .photo_img a img:hover{
@@ -171,14 +171,11 @@ body{
     transition: opacity 0.1s ease;
 }
 
-.photo_img:hover .photo_info{
-    display: block;
+/*.photo_img:hover .photo_info{*/
+/*    display: block;*/
+/*}*/
+
+.modal_img {
+    width: 400px;
+    height: 400px;
 }
-
-.polaroid{
-          width: 50%;
-          background-color: white;
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-          margin-bottom: 50px; /*카드 거리*/
-        }
-

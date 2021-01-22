@@ -1,52 +1,122 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instagram</title>
+    <!--    <link rel="shortcut icon" href="./images/favicon.ico">-->
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+      <!-- Bootstrap js -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+              integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+      <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+
+
     <!-- style -->
-    <link rel="stylesheet" href="./css/style.css">
-    <style>
-        /*body {margin:50px;}*/
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
 
-        /*.polaroid {*/
-        /*  width: 40%;*/
-        /*  background-color: white;*/
-        /*  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
-        /*  margin-bottom: 50px; !*카드 거리*!*/
-        /*}*/
-        .pola{
-            background :url('../images/8.jpg') center;
-            border : solid #fff;
-            border-width : 6px 6px 20px 6px;
-            box-shadow : 1px 1px 5px # 333; /* 5px의 표준 블러. 더 깊이를 위해 증가 */
-            -webkit-box-shadow : 1px 1px 5px # 333;
-            -moz-box-shadow : 1px 1px 5px # 333;
-            height : 400px; /* 이미지 높이 또는 원하는 div로 설정 */
-            width : 400px;  /* 이미지 너비 또는 원하는 div로 설정 */
-
-            }
-
-
-        /*.container {*/
-        /*  !*text-align: center;*!*/
-        /*  padding: 100px 20px;*/
-        /*}*/
-    </style>
 </head>
 <body>
 
-                <div class="polaroid">
-                  <img src ="../images/8.jpg" alt="Norway" style="width:100%">
-                  <div class="container">
-                    <p>피자랑 파스타 열라 맛있다</p>
-                  </div>
-                </div>
+<!--               <section id="photo">-->
+<!--      <div class="container">-->
+<!--        <div class="photo">-->
 
-                <div class="polaroid">
-                  <img src="../images/7.jpg" alt="Norway" style="width:100%">
-                  <div class="container">
-                    <p>Northern Lights in Norway</p>
-                  </div>
-                </div>
+<!--          <button type="button" class="btn btn-Success" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
+<!--             <div class="photo_img">-->
+<!--               <a href="#">-->
+<!--                 <img src="{{ url_for('static', filename='1.jpg') }}" alt="1" />-->
+<!--               </a>-->
+<!--             </div>-->
+<!--          </button>-->
+
+<!--          &lt;!&ndash; Modal &ndash;&gt;-->
+<!--          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--            <div class="modal-dialog" role="document">-->
+<!--              <div class="modal-content">-->
+<!--                <div class="modal-header">-->
+<!--                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>-->
+<!--                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                    <span aria-hidden="true">&times;</span>-->
+<!--                      </button> </div> <div class="modal-body">-->
+<!--                      ekfekfekf-->
+<!--                      </div> <div class="modal-footer">-->
+<!--                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--                    <button type="button" class="btn btn-primary">Save changes</button>-->
+<!--                  </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+
+<!--            </div>-->
+<!--      </div>-->
+<!--    </section>-->
+
+<!-- Button trigger modal -->
+
+<section id="photo">
+      <div class="container">
+        <div class="photo">
+
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+           <div class="photo_img">
+               <a href="#">
+                 <img src="{{ url_for('static', filename='1.jpg') }}" alt="1" />
+               </a>
+             </div>
+        </button>
+
+            </div>
+      </div>
+    </section>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> </h5> <!--모달 제목 -->
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="modal_img">
+               <a href="#">
+                 <img src="{{ url_for('static', filename='1.jpg') }}" alt="1" />
+               </a>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+          토스트 존맛탱구리!!ㄹㄴㅇ아ㅏㅏㅡㅏㅡㅇ니라ㅣ먼우채냉 길게ㅣ이어ㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓ누처낭
+<!--        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>-->
+<!--        <button type="button" class="btn btn-primary">Save changes</button>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal_img">
+               <a href="#">
+                 <img src="{{ url_for('static', filename='1.jpg') }}" alt="1" />
+               </a>
+        </div>
+
 
 
 </body>

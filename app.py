@@ -1,6 +1,6 @@
 from flask import Flask, render_template, jsonify, request
 from datetime import date
-import requests
+from werkzeug.utils import secure_filename
 
 from bs4 import BeautifulSoup
 from pymongo import MongoClient  # pymongo를 임포트 하기
@@ -22,6 +22,8 @@ def write_review(): #데이터를 저장
     title = request.form['title']
     # photo = request.form['author']
     review = request.form['review']
+    file = request.form['file']
+    file.save(secure_filename(file.filename))
 
     #review 가 문자열이면 날짜 출력..?
     if (str(type(review)) == "<class 'str'>"):
@@ -32,13 +34,16 @@ def write_review(): #데이터를 저장
         'title':title,
         # 'photo':photo,
         'review':review,
-        'day':day
+        'day':day,
+        'file':file
     }
 
     #mongodb로 데이터 넣어주기
     db.insta_review.insert_one(review_data)
 
     return jsonify({'result':'success','msg':"POST 리뷰가 성공적으로 저장"})
+
+
 
 
 @app.route('/review', methods=['GET'])

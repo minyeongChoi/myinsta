@@ -42,10 +42,12 @@
                 showReview();
             });
             function makeReview() {
-                // 1. 제목, 저자, 리뷰 내용을 가져옵니다. -> jQuery id를 가지고 와서 '값'을 출력  .val()
+                // 1. 제목, 파일, 리뷰 내용을 가져옵니다. -> jQuery id를 가지고 와서 '값'을 출력  .val()
                 let title = $('#title').val()
                 // let author = $('#author').val()
                 let review = $('#review').val()
+                let file = $('#file').val()
+
 
                 // // 2. 제목, 저자, 리뷰 중 하나라도 입력하지 않았을 경우 alert를 띄웁니다.
                 // if(title == ""){
@@ -66,7 +68,8 @@
                     data: {             //왼쪽은 키 오른쪽은 가져온 값
                         title:title,
                         // author:author,
-                        review:review
+                        review:review,
+                        file:file
                     },
                     success: function (response) {
                         if (response["result"] == "success") {
@@ -91,19 +94,23 @@
                             //회면에 데이터를 나타내줘야함
                             // let author = data[i]['author']
                             let title = data[i]['title']
+                            let file = data[i]['file']
                             let review = data[i]['review']
+                            let day = data[i]['day']
 
-                            writeTable(title,review)
+                            writeTable(title,file,review,day)
                         }
                     }
                 })
             }
 
-            function writeTable(title,review){
+            function writeTable(title,review,day){
                 let tmpHtml = `
                     <tr>
                         <td>${title}</td>
                         <td>${review}</td>
+                        <td>${file}</td>
+                        <td>${day}</td>
                     </tr>
                     `
                 $("#reviews-box").append(tmpHtml)
@@ -183,6 +190,12 @@
                 <td><input type="text" name="title" id="title" required /></td>
               </tr>
               <tr>
+                <td>파일</td>
+                <td>
+                  <input type="file" name="file" id="file" required/>
+                </td>
+              </tr>
+              <tr>
                 <td>내용</td>
                 <td>
                   <textarea
@@ -197,7 +210,7 @@
 <!--              </tr>-->
 
               <div class="review">
-                    <button onclick="makeReview()" type="button" class="btn btn-primary">리뷰 작성하기</button>
+                    <button onclick="makeReview()" type="submit" class="btn btn-primary">리뷰 작성하기</button>
                 </div>
             </table>
           </div>
@@ -266,11 +279,15 @@
              </div>
           </button>
 
+          <div id="reviews-box">
+            db 리스트
+          </div>
+
  <!-- Modal -->
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
-                <div class="modal-header" id="reviews-box">
+                <div class="modal-header" >
                   <h5 class="modal-title" id="exampleModalLabel"> </h5> <!--모달 제목 -->
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>

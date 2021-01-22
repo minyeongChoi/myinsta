@@ -22,6 +22,7 @@ def write_review(): #데이터를 저장
     title = request.form['title']
     # photo = request.form['author']
     review = request.form['review']
+
     file = request.form['file']
     file.save(secure_filename(file.filename))
 

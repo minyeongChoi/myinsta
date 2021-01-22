@@ -104,13 +104,13 @@
                 })
             }
 
-            function writeTable(title,review,day){
+            function writeTable(title,review,day,file){
                 let tmpHtml = `
                     <tr>
                         <td>${title}</td>
                         <td>${review}</td>
-                        <td>${file}</td>
                         <td>${day}</td>
+                        <td>${file}</td>
                     </tr>
                     `
                 $("#reviews-box").append(tmpHtml)
@@ -243,38 +243,6 @@
              <div class="photo_img">
                <a href="#">
                  <img src="{{ url_for('static', filename='3.jpg') }}" alt="1" />
-               </a>
-             </div>
-          </button>
-
-          <button type="button" class="btn btn-Success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-             <div class="photo_img">
-               <a href="#">
-                 <img src="{{ url_for('static', filename='4.jpg') }}" alt="1" />
-               </a>
-             </div>
-          </button>
-
-          <button type="button" class="btn btn-Success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-             <div class="photo_img">
-               <a href="#">
-                 <img src="{{ url_for('static', filename='5.jpg') }}" alt="1" />
-               </a>
-             </div>
-          </button>
-
-          <button type="button" class="btn btn-Success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-             <div class="photo_img">
-               <a href="#">
-                 <img src="{{ url_for('static', filename='6.jpg') }}" alt="1" />
-               </a>
-             </div>
-          </button>
-
-          <button type="button" class="btn btn-Success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-             <div class="photo_img">
-               <a href="#">
-                 <img src="{{ url_for('static', filename='7.jpg') }}" alt="1" />
                </a>
              </div>
           </button>

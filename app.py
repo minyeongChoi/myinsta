@@ -23,8 +23,8 @@ def write_review(): #데이터를 저장
     # photo = request.form['author']
     review = request.form['review']
 
-    file = request.form['file']
-    file.save(secure_filename(file.filename))
+    # file = request.form['file']
+    # file.save(secure_filename(file.filename))
 
     #review 가 문자열이면 날짜 출력..?
     if (str(type(review)) == "<class 'str'>"):
@@ -33,10 +33,10 @@ def write_review(): #데이터를 저장
     #딕셔너리로 데이터 묶기
     review_data = {
         'title':title,
-        # 'photo':photo,
         'review':review,
-        'day':day,
-        'file':file
+        # 'file': file,
+        'day':day
+
     }
 
     #mongodb로 데이터 넣어주기

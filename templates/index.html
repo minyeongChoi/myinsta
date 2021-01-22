@@ -46,7 +46,7 @@
                 let title = $('#title').val()
                 // let author = $('#author').val()
                 let review = $('#review').val()
-                let file = $('#file').val()
+                // let file = $('#file').val()
 
 
                 // // 2. 제목, 저자, 리뷰 중 하나라도 입력하지 않았을 경우 alert를 띄웁니다.
@@ -67,9 +67,8 @@
                     url: "/upload",
                     data: {             //왼쪽은 키 오른쪽은 가져온 값
                         title:title,
-                        // author:author,
                         review:review,
-                        file:file
+                        // file:file
                     },
                     success: function (response) {
                         if (response["result"] == "success") {
@@ -92,29 +91,39 @@
                         let data = response['reviews']
                         for(let i=0; i<data.length;i++){
                             //회면에 데이터를 나타내줘야함
-                            // let author = data[i]['author']
                             let title = data[i]['title']
-                            let file = data[i]['file']
+                            // let file = data[i]['file']
                             let review = data[i]['review']
                             let day = data[i]['day']
 
-                            writeTable(title,file,review,day)
+                            writeTable(title)
+                            writeTable_s(review,day)
+                            writeTable_d(day)
                         }
                     }
                 })
             }
 
-            function writeTable(title,review,day,file){
+            function writeTable(title){
                 let tmpHtml = `
-                    <tr>
-                        <td>${title}</td>
-                        <td>${review}</td>
-                        <td>${day}</td>
-                        <td>${file}</td>
-                    </tr>
+                        ${title}
                     `
-                $("#reviews-box").append(tmpHtml)
+                $("#reviews-title").append(tmpHtml)
             }
+
+            function writeTable_s(review){
+                let tmpHtml = `
+                        ${review}
+                    `
+                $("#reviews-review").append(tmpHtml)
+            }
+            function writeTable_d(day){
+                let tmpHtml = `
+                        ${day}
+                    `
+                $("#reviews-day").append(tmpHtml)
+            }
+
             // function validateLength(obj) {
             //     let content = $(obj).val();
             //     if (content.length > 140) {
@@ -247,16 +256,13 @@
              </div>
           </button>
 
-          <div id="reviews-box">
-            db 리스트
-          </div>
-
  <!-- Modal -->
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
-              <div class="modal-content">
+              <div class="modal-content" >
                 <div class="modal-header" >
-                  <h5 class="modal-title" id="exampleModalLabel"> </h5> <!--모달 제목 -->
+                  <h4 id="reviews-title"></h4>
+                  <h5 class="modal-title" id="exampleModalLabel"></h5> <!--모달 제목 -->
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -266,14 +272,12 @@
                              </a>
                       </div>
                 </div>
-
-                <div class="modal-footer justify-content-between">
-                  <p>텍스트 왼쪽 정렬) 토스트 맛있다 아라ㅡ채ㅔㅔ매ㅑ두ㅡㅌㅊ어ㅑ래ㅏㅏ 나ㅏㅣ야쵸</p>
-               </div>
-
+                <div class="modal-footer" id="reviews-day"></div>
+                <h5 id="reviews-review"></h5>
               </div>
             </div>
           </div>
+
 
         </div>
       </div>
